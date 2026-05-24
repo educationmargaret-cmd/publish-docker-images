@@ -24,9 +24,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: ghcr.io/${{ github.repository }}:latest
-          
+        run: |
+          docker build . --tag ghcr.io/educationmargaret-cmd/publish-docker-images/stackoverflow:main
+          docker push ghcr.io/educationmargaret-cmd/publish-docker-images/stackoverflow:main
